@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+	MAKING TYPE COUNTER	
+	</title>
+	<style type="text/css">
+		#myInput{text-align: center;
+			background:#b5b5b7;
+		}
+		#green{color:#9ACD32;
+		font-size: 20px;}
+        #red{color: #CC1100;
+        font-size: 20px;} 
+        #myInput{width:100%;
+        	font-size: 20px;}
+        i{font-size: 20px;}
+        body{background:#3AAFA9;
+       color:white; 
+        }
+        h1{text-align: center;
+           border : 2px double ;
+           border-radius: 5px;
+        }
+        h2{text-align: center;}	
+        h3{width:20%;
+        	margin-left: 40%;
+        	margin-right: 40%;
+        	background: white;
+        	text-align: center;
+            border-radius: 10px;
+            color: #3AAFA9;
+        }
+span{text-align: center;
+	}
+	#difficulty{border:2px solid white;
+		padding: 5px;
+		border-radius: 5px;
+	}
+
+	.result{ border:2px solid white;
+	text-align: center;
+	padding: 5px;
+	border-radius: 5px; }
+ 	</style>
+
+</head>
+<body>
+<h1>TYPE RACER</h1>	
+
+<span id="difficulty">Select Difficulty Level</span>
+<button type="button" onclick="easy()">EASY</button>
+<button type="button" onclick="medium()">MEDIUM</button>
+<button type="button" onclick="hard()">HARD</button>
+
+<hr>
+<i id="text"></i><br>
+<span id="green"></span><span id="red"></span>
+<hr>
+<input type="text" id="myInput" oninput="myFunction()" placeholder="Start typing.............">
+<hr>
+<h2>TIME COUNT IN SECONDS</h2>
+<h3 id="time"></h3>
+
+
+<ul>
+	<li >TOTAL WORDS TYPED    :-<span id="a" class="result"></span><hr></li>
+	<li >TIME CONSUMED        :-<span id="b" class="result"></span><hr></li>
+	<li >TYPING SPEED         :-<span id="c" class="result"></span><hr></li>
+</ul>
+
+<span ><button type="button" onclick="reload()">RETRY</button></span>
+<script type="text/javascript">
+ 
+function reload() {
+    location.reload();
+}
+
+// Start
+var sec=0;
+document.querySelector("#myInput").addEventListener("click",function(){
+	setInterval(me,1000)
+});
+
+function me(){
+    sec++;
+	console.log(sec);
+	document.querySelector("#time").innerHTML=sec;
+}
+function myFunction(){
+  
+var x = document.querySelector("#myInput").value;
+
+    var y = document.querySelector("#text").innerHTML;
+
+	var num = x.length -1;
+
+
+	 if(y.length==x.length){
+	 	
+var time = document.querySelector("#time").innerHTML;
+	 var speed = y.length/time;
+	 document.querySelector("#time").innerHTML=time;
+document.querySelector("#a").innerHTML+=y.length;	
+document.querySelector("#b").innerHTML+=time;
+document.querySelector("#c").innerHTML+=speed;
+	 	 }
+
+  if(x[num]==y[num]){
+document.querySelector("#myInput").style.color="#00b300";
+ var str1 = y.substring(0,num+1);
+var str2 = y.substring(num+1,y.length);
+
+document.querySelector("#green").innerHTML = str1;
+document.querySelector("#red").innerHTML = str2;
+
+document.querySelector("#text").style.color="#3AAFA9";
+}
+
+
+  	else{alert("TRY AGAIN.....")
+document.querySelector("#myInput").value= x.substring(0,x.length-1);
+document.querySelector("#myInput").style.color="#CC1100";
+ }
+   }
+// End
+function easy(){
+
+	var u = ["Love For All, Hatred For None",
+	"Change the world by being yourself",
+	"Every moment is a fresh beginning",
+	"Never regret anything that made you smile",
+	"Die with memories, not dreams",
+	"Aspire to inspire before we expire",
+	"Everything you can imagine is real",
+	"Simplicity is the ultimate sophistication",
+	"Whatever you do, do it well",
+	"What we think, we become"
+	]
+	document.querySelector("#text").innerHTML = u[Math.floor(Math.random()*10)];
+}
+
+function medium(){
+
+var v = ["I have learned that as long as I hold fast to my beliefs and values - and follow my own moral compass - then the only expectations I need to live up to are my own","For once you have tasted flight you will walk the earth with your eyes turned skywards, for there you have been and there you will long to return","I look my best when I take my helmet off after a long motorcycle ride. I have a glow and a bit of helmet hair","The mind is the limit. As long as the mind can envision the fact that you can do something, you can do it, as long as you really believe 100 percent","I'm continually trying to make choices that put me against my own comfort zone. As long as you're uncomfortable, it means you're growing"
+	]
+	document.querySelector("#text").innerHTML = v[Math.floor(Math.random()*5)];
+}
+
+function hard(){
+
+var w = ["Your personal life, your professional life, and your creative life are all intertwined. I went through a few very difficult years where I felt like a failure. But it was actually really important for me to go through that. Struggle, for me, is the most inspirational thing in the world at the end of the day - as long as you treat it that way","We live in a world where finding fault in others seems to be the favorite blood sport. It has long been the basis of political campaign strategy. It is the theme of much television programming across the world. It sells newspapers. Whenever we meet anyone, our first, almost unconscious reaction may be to look for imperfections"
+	]
+	document.querySelector("#text").innerHTML = w[Math.floor(Math.random()*2)];
+}
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+ 
